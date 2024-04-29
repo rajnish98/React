@@ -5,7 +5,7 @@ function Card({player, onPlay, index}){
   let icon = <Icon/>
   if(player == 'x'){
     icon = <Icon name = "cross" />
-  } else if (player == '0') {
+  } else if (player == 'o') {
     icon = < Icon name="circle"/>
   }
   return (

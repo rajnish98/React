@@ -6,15 +6,15 @@ import "./Grid.css"
 
 function Grid( {numberOfCards}){
   const [board, setBoard] = useState(Array(numberOfCards).fill(""));
-const [Turn, setTurn] = useState(true) // true => 0, false => x
-const [winner, setWinner] = useState(null)
+const [Turn, setTurn] = useState(true); // true => 0, false => x
+const [winner, setWinner] = useState(null);
 function play(index){
   if(Turn == true) {
-    board[index] = "0";
+    board[index] = "o";
   } else {
     board[index] = "x";
   }
-  const win = isWinner(board, Turn ? "0" : "x");
+  const win = isWinner(board, Turn ? "o" : "x");
   if(win){
     setWinner(win);
   }
@@ -32,12 +32,12 @@ function play(index){
         </>
       )
     }
-    <h1 className="turn-high-light">Current Turn: {(Turn) ? '0' : 'x'}</h1>
+    <h1 className="turn-high-light">Current Turn: {(Turn) ? 'o' : 'x'}</h1>
      <div className="grid">
       {board.map((el, idx) => <Card key={idx} onPlay={play} player={el} index={idx} />)}
     </div>
      </div>
-  )
+  );
 }
 
 export default Grid;
