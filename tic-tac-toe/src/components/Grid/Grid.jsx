@@ -22,19 +22,24 @@ function play(index){
   setTurn(!turn);
 }
 
+function reset(){
+  setTurn(true);
+  setWinner(null);
+  setBoard(Array(numberOfCards).fill(""))
+}
   return (
    <div className= "grid-wrapper">
     {
       winner && (
         <>
         <h1 className="turn-high-light">Winner is {winner}</h1>
-        <button className="reset">Reset Game</button>
+        <button className="reset" onClick={reset}>Reset Game</button>
         </>
       )
     }
     <h1 className="turn-high-light">Current Turn: {(turn) ? 'o' : 'x'}</h1>
      <div className="grid">
-      {board.map((el, idx) => <Card key={idx} onPlay={play} player={el} index={idx} />)}
+      {board.map((el, idx) => <Card gameEnd={winner ? true : false} key={idx} onPlay={play} player={el} index={idx} />)}
     </div>
      </div>
   );
